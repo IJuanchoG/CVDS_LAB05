@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>edu.eci.cvds</groupId>
-  <artifactId>Game</artifactId>
+  <artifactId>FaceServlet</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
 
-  <name>Game Maven Webapp</name>
+  <name>FaceServlet Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://maven.apache.org</url>
 
@@ -33,12 +33,18 @@
 		<version>8.0</version>
 		<scope>provided</scope>
 	</dependency>
+	<dependency>
+        <groupId>com.sun.faces</groupId>
+        <artifactId>jsf-api</artifactId>
+        <version>2.2.20</version>
+    </dependency>
 	<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
 	<dependency>
 		<groupId>com.sun.faces</groupId>
 		<artifactId>jsf-impl</artifactId>
 		<version>2.2.20</version>
 	</dependency>
+	
 	<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 	<dependency>
 		<groupId>javax.servlet</groupId>
@@ -54,7 +60,7 @@
   </dependencies>
 
   <build>
-    <finalName>Game</finalName>
+    <finalName>FaceServlet</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

@@ -1,26 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3c.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui"
-xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Bienvenido al juego de adivinanza</title>
+		Bienvenido al Juego!
+		Intenta adivinar este numero entre 1 y 20
     </h:head>
     <h:body>
         <h:form id="guess_form">            
-		<h1 class = "titulo">Adivine un numero entre 1 y 20!!!</h1>
-                <p:outputLabel value="#{guessBean.numeroAdivinar}" class="adivinar"></p:outputLabel>
-                <p:outputLabel value="#{guessBean.mensajeActual}" id="mensajeA" class="mensajeA"></p:outputLabel>               
-		<h2>Posible premio</h2>
-                <p:outputLabel value="#{guessBean.premio}"></p:outputLabel>
-		<h2>Numero Intentos</h2>
-		<p:outputLabel value="#{guessBean.numeroIntentos}"></p:outputLabel>
-		<h2>Lista Intentos fallidos</h2>
-		<ui:repeat var="item" value="#{guessBean.intentos}">				  
-			<h:outputText value="#{item}" class="lista"/>				    
-		</ui:repeat>
-                <p:inputText id="numero" binding="#{numero}"></p:inputText>
-                <p:commandButton value="Adivinar" update="guess_form" actionListener="#{guessBean.guess(numero.value)}"></p:commandButton>
-                <p:commandButton value="Reiniciar" update="guess_form" actionListener="#{guessBean.reStart}"></p:commandButton>
+			<!--p:outputLabel 
+				value="Numero a adivinar: #{guessBean.getNumeroAdivinar()}">
+			</p:outputLabel-->
+			<br></br>	
+			
+			<p:outputLabel 
+				value="#{guessBean.getEstado()}">
+			</p:outputLabel>               
+			<br></br>				
+			<p:inputText 
+				id="numero" binding="#{numero}">
+			</p:inputText>
+			<br></br>	
+			<p:outputLabel 
+				value="estos son tus puntos!#{guessBean.getPuntos()}">
+			</p:outputLabel>
+			<br></br>
+			<p:outputLabel 
+				value="Estos son los intentos que llevas! #{guessBean.getNumeroIntentos()}">
+			</p:outputLabel>
+			<br></br>
+			
+			<h2>Estos fueron tus intentos!</h2>
+			<p:dataTable  value ="#{guessBean.getIntentos()}" var ="item" >
+						
+				<p:column headerText="Intentos" filterMatchMode="contains" >
+					<p.center>
+					<p:outputLabel value ="#{item}"/>
+					</p.center>
+				</p:column>
+						
+			</p:dataTable>
+			<br></br>
+			<p:commandButton 
+				value="Adivinar" actionListener="#{guessBean.guess(numero.value)}" update="guess_form" >
+			</p:commandButton>
+			<p:commandButton 
+				value="Nuevo Juego" actionListener="#{guessBean.restart()}" update="guess_form">
+			</p:commandButton>
             
         </h:form>
     </h:body>
